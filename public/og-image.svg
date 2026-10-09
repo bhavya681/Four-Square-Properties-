@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#EAF7FC"/>
+  <rect x="80" y="80" width="88" height="88" rx="16" fill="#123B5D"/>
+  <rect x="96" y="96" width="24" height="24" fill="#16A8D5"/>
+  <rect x="128" y="96" width="24" height="24" fill="#EAF7FC"/>
+  <rect x="96" y="128" width="24" height="24" fill="#EAF7FC"/>
+  <rect x="128" y="128" width="24" height="24" fill="#16A8D5"/>
+  <text x="200" y="140" font-family="Arial, sans-serif" font-size="42" fill="#123B5D" font-weight="700">Four Square Properties &amp; Finance Services</text>
+  <text x="80" y="300" font-family="Arial, sans-serif" font-size="56" fill="#123B5D" font-weight="700">Your Trusted Partner in Property &amp; Finance</text>
+  <text x="80" y="380" font-family="Arial, sans-serif" font-size="28" fill="#16A8D5">Buy · Sell · Invest · Finance · PalgharBoisar</text>
+</svg>
