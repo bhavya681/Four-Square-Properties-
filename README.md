@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Four Square Properties & Finance Services
 
-## Getting Started
+Frontend-only website for a real estate and finance consultancy in Palghar–Boisar. Built with Next.js (App Router), React, TypeScript and Tailwind CSS. There is no backend, database or live AI service.
 
-First, run the development server:
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm run lint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Routes
 
-## Learn More
+- `/` Home
+- `/properties` Property search (local filters)
+- `/properties/[slug]` Property details
+- `/about` About
+- `/services` Services
+- `/contact` Contact and enquiry form
+- `/admin` Demo admin dashboard
+- `/admin/new` Add a demo property
+- `/admin/edit/[id]` Edit a demo property
 
-To learn more about Next.js, take a look at the following resources:
+## How to edit sample properties
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Open `/admin` (demonstration only — no real login).
+2. Use **Add property** or **Edit**.
+3. Upload up to seven images. Previews use object URLs; files are stored in IndexedDB in this browser.
+4. Listing fields (except image binaries) are saved in `localStorage`.
+5. **Reset demo data** restores the original sample set and clears stored images.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+If IndexedDB or localStorage is blocked, the site falls back to the seed listings in `src/lib/seed-data.ts`.
 
-## Deploy on Vercel
+## Demo-only features
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Admin create/edit/delete, featured flags, testimonials and enquiry copies
+- Chatbot (rule-based, not a live AI model)
+- Form “success” that opens WhatsApp or an email draft
+- Sample prices, availability and photographs
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+None of this is stored on a server or sent to the business unless the visitor actually sends WhatsApp or email.
+
+## Business details still required
+
+- Official Instagram profile URL (`src/lib/config.ts` → `contact.instagramUrl`)
+- Confirmed visiting hours
+- Real listings and photography to replace sample data
+- Genuine testimonials with permission
+- Visiting-card scan was not present in this repository; contact details were taken from the project brief
+
+Set Instagram in a single constant. Do not invent a handle.
+# Four-Square-Properties-
