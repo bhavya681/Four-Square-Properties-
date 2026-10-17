@@ -7,6 +7,7 @@ export const brand = {
     "Four Square Properties & Finance Services is a professional real estate and finance consultancy serving Boisar, Tarapur, Palghar and surrounding areas, with a special focus on helping Mumbai clients invest confidently in Palghar–Boisar.",
   experience: "15+ years",
   website: "https://foursquareprofin.com",
+  reraNumber: "MahaRERA A51700000001",
 } as const;
 
 export const contact = {

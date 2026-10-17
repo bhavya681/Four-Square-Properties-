@@ -8,9 +8,22 @@ import { getBotReply, suggestedQuestions, type ChatLink } from "@/lib/chatbot";
 
 type Message = { id: number; from: "bot" | "user"; text: string; links?: ChatLink[] };
 
-export function Chatbot() {
+export function Chatbot({
+  open: controlledOpen,
+  onOpenChange,
+  hideTrigger = false,
+}: {
+  open?: boolean;
+  onOpenChange?: (value: boolean) => void;
+  hideTrigger?: boolean;
+} = {}) {
+  const [internalOpen, setInternalOpen] = useState(false);
+  const open = controlledOpen ?? internalOpen;
+  const setOpen = (value: boolean) => {
+    if (onOpenChange) onOpenChange(value);
+    else setInternalOpen(value);
+  };
   const { properties } = useDemoStore();
-  const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [typing, setTyping] = useState(false);
   const [seq, setSeq] = useState(1);
@@ -43,15 +56,23 @@ export function Chatbot() {
 
   return (
     <>
-      <button
-        type="button"
-        className="fixed bottom-22 right-4 z-40 rounded-full bg-navy px-4 py-3 text-sm font-semibold text-white shadow-lg sm:bottom-24"
-        style={{ bottom: "5.75rem" }}
-        onClick={() => setOpen(true)}
-        aria-haspopup="dialog"
-      >
-        Property Assistant
-      </button>
+      {!hideTrigger ? (
+        <button
+          type="button"
+          className="fixed bottom-5 cursor-pointer right-4 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-sky text-navy shadow-lg transition hover:scale-105"
+          onClick={() => setOpen(true)}
+          aria-haspopup="dialog"
+          aria-label="Property Assistant"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+            <rect x="4" y="7" width="16" height="12" rx="3" />
+            <path d="M12 7V4M9 4h6" />
+            <circle cx="9" cy="13" r="1.2" fill="currentColor" />
+            <circle cx="15" cy="13" r="1.2" fill="currentColor" />
+            <path d="M9 17h6" />
+          </svg>
+        </button>
+      ) : null}
       {open ? (
         <div
           className="fixed inset-x-3 bottom-3 z-50 flex max-h-[min(36rem,calc(100vh-5rem))] flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-card sm:inset-x-auto sm:right-4 sm:bottom-24 sm:w-[24rem]"
