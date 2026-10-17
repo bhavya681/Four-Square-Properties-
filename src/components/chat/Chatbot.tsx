@@ -59,12 +59,12 @@ export function Chatbot({
       {!hideTrigger ? (
         <button
           type="button"
-          className="fixed bottom-5 cursor-pointer right-4 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-sky text-navy shadow-lg transition hover:scale-105"
+          className="fixed bottom-6 right-5 z-40 flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-gradient-to-br from-primary to-accent text-white shadow-[0_8px_24px_rgba(22,168,213,0.45)] ring-4 ring-white/60 transition hover:scale-110 hover:shadow-[0_12px_30px_rgba(22,168,213,0.55)] dark:ring-sky-soft/50"
           onClick={() => setOpen(true)}
           aria-haspopup="dialog"
           aria-label="Property Assistant"
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
             <rect x="4" y="7" width="16" height="12" rx="3" />
             <path d="M12 7V4M9 4h6" />
             <circle cx="9" cy="13" r="1.2" fill="currentColor" />
@@ -75,11 +75,11 @@ export function Chatbot({
       ) : null}
       {open ? (
         <div
-          className="fixed inset-x-3 bottom-3 z-50 flex max-h-[min(36rem,calc(100vh-5rem))] flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-card sm:inset-x-auto sm:right-4 sm:bottom-24 sm:w-[24rem]"
+          className="fixed inset-x-3 bottom-3 z-50 flex max-h-[min(36rem,calc(100vh-5rem))] flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-[0_20px_50px_rgba(18,59,93,0.18)] ring-1 ring-sky-soft/60 sm:inset-x-auto sm:right-4 sm:bottom-24 sm:w-[24rem]"
           role="dialog"
           aria-label="Property Assistant"
         >
-          <div className="flex items-center justify-between bg-navy px-4 py-3 text-white">
+          <div className="flex items-center justify-between bg-gradient-to-r from-navy to-[#0f3a5f] px-4 py-3 text-white">
             <div>
               <p className="font-semibold">Property Assistant</p>
               <p className="text-xs text-white/70">Rule-based demo · not a live AI model</p>
@@ -102,7 +102,9 @@ export function Chatbot({
               <div
                 key={message.id}
                 className={`max-w-[90%] rounded-xl px-3 py-2 text-sm ${
-                  message.from === "user" ? "ml-auto bg-primary text-white" : "bg-sky text-navy"
+                  message.from === "user"
+                    ? "ml-auto bg-gradient-to-br from-primary to-accent text-white shadow-md"
+                    : "bg-sky text-navy border border-sky-soft"
                 }`}
               >
                 <p>{message.text}</p>
@@ -110,7 +112,7 @@ export function Chatbot({
                   <ul className="mt-2 space-y-1">
                     {message.links.map((link) => (
                       <li key={link.href}>
-                        <Link className="underline" href={link.href} onClick={() => setOpen(false)}>
+                        <Link className="underline text-accent hover:text-primary" href={link.href} onClick={() => setOpen(false)}>
                           {link.label}
                         </Link>
                       </li>
@@ -125,7 +127,7 @@ export function Chatbot({
                 <button
                   key={question}
                   type="button"
-                  className="rounded-full border border-line px-3 py-1 text-left text-xs text-navy"
+                  className="rounded-full border border-line bg-sky-soft px-3 py-1 text-left text-xs text-navy transition hover:border-primary hover:bg-sky"
                   onClick={() => pushReply(question)}
                 >
                   {question}
@@ -134,7 +136,7 @@ export function Chatbot({
             </div>
           </div>
           <form
-            className="flex gap-2 border-t border-line p-3"
+            className="flex gap-2 border-t border-line bg-sky-soft/40 p-3"
             onSubmit={(event) => {
               event.preventDefault();
               if (!input.trim()) return;

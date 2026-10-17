@@ -29,7 +29,7 @@ export function WhatsAppButton() {
         </a>
         <button
           type="button"
-          className="flex h-14 w-14 items-center justify-center rounded-full bg-navy text-white shadow-lg transition hover:scale-105"
+          className="flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-gray-200 text-gray-700 shadow-lg transition hover:scale-105"
           onClick={() => setChatOpen(true)}
           aria-haspopup="dialog"
           aria-label="Property Assistant"
