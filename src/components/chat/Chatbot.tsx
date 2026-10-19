@@ -59,17 +59,17 @@ export function Chatbot({
       {!hideTrigger ? (
         <button
           type="button"
-          className="fixed bottom-6 right-5 z-40 flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-gradient-to-br from-primary to-accent text-white shadow-[0_8px_24px_rgba(22,168,213,0.45)] ring-4 ring-white/60 transition hover:scale-110 hover:shadow-[0_12px_30px_rgba(22,168,213,0.55)] dark:ring-sky-soft/50"
+          className="fixed bottom-6 right-5 z-40 flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-[#123b5d] text-white shadow-[0_8px_24px_rgba(18,59,93,0.45)] ring-4 ring-white/60 transition hover:scale-110 hover:shadow-[0_12px_30px_rgba(18,59,93,0.55)] dark:ring-sky-soft/50"
           onClick={() => setOpen(true)}
           aria-haspopup="dialog"
           aria-label="Property Assistant"
         >
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-            <rect x="4" y="7" width="16" height="12" rx="3" />
-            <path d="M12 7V4M9 4h6" />
-            <circle cx="9" cy="13" r="1.2" fill="currentColor" />
-            <circle cx="15" cy="13" r="1.2" fill="currentColor" />
-            <path d="M9 17h6" />
+          <svg width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+            <rect width="40" height="40" rx="8" fill="#123B5D"/>
+            <rect x="7" y="7" width="11" height="11" rx="1.5" fill="#16A8D5"/>
+            <rect x="22" y="7" width="11" height="11" rx="1.5" fill="#EAF7FC"/>
+            <rect x="7" y="22" width="11" height="11" rx="1.5" fill="#EAF7FC"/>
+            <rect x="22" y="22" width="11" height="11" rx="1.5" fill="#16A8D5"/>
           </svg>
         </button>
       ) : null}
@@ -80,9 +80,18 @@ export function Chatbot({
           aria-label="Property Assistant"
         >
           <div className="flex items-center justify-between bg-gradient-to-r from-navy to-[#0f3a5f] px-4 py-3 text-white">
-            <div>
-              <p className="font-semibold">Property Assistant</p>
-              <p className="text-xs text-white/70">Rule-based demo · not a live AI model</p>
+            <div className="flex items-center gap-2.5">
+              <svg width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                <rect width="40" height="40" rx="8" fill="#123B5D"/>
+                <rect x="7" y="7" width="11" height="11" rx="1.5" fill="#16A8D5"/>
+                <rect x="22" y="7" width="11" height="11" rx="1.5" fill="#EAF7FC"/>
+                <rect x="7" y="22" width="11" height="11" rx="1.5" fill="#EAF7FC"/>
+                <rect x="22" y="22" width="11" height="11" rx="1.5" fill="#16A8D5"/>
+              </svg>
+              <div>
+                <p className="font-semibold">Property Assistant</p>
+                <p className="text-xs text-white/70">Rule-based demo · not a live AI model</p>
+              </div>
             </div>
             <div className="flex gap-2">
               <button
