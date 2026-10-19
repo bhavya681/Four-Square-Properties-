@@ -117,6 +117,8 @@ img {
   border: 1px solid transparent;
   text-align: center;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn:hover {
@@ -129,21 +131,23 @@ img {
 }
 
 .btn-primary {
-  background: var(--primary);
+  background: linear-gradient(135deg, var(--primary), var(--accent));
   color: #fff;
+  box-shadow: 0 2px 8px rgba(22, 168, 213, 0.3);
 }
 
 .btn-primary:hover {
-  background: var(--accent);
+  background: linear-gradient(135deg, var(--accent), #0b7a94);
+  box-shadow: 0 4px 16px rgba(22, 168, 213, 0.4);
 }
 
 .btn-navy {
-  background: var(--navy);
+  background: linear-gradient(135deg, var(--navy), #0b2a44);
   color: #fff;
 }
 
 .btn-navy:hover {
-  background: #0d2d47;
+  background: linear-gradient(135deg, #0b2a44, var(--navy));
 }
 
 .btn-outline {
@@ -155,6 +159,7 @@ img {
 .btn-outline:hover {
   border-color: var(--primary);
   color: var(--accent);
+  box-shadow: 0 2px 8px rgba(22, 168, 213, 0.15);
 }
 
 /* ---------- Cards ---------- */
@@ -164,6 +169,13 @@ img {
   border-radius: 1rem;
   box-shadow: var(--shadow-soft);
   overflow: hidden;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-card);
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--primary) 30%, var(--line));
 }
 
 /* ---------- Form controls ---------- */
@@ -190,13 +202,25 @@ img {
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 18%, white);
 }
 
+.input:invalid,
+.select:invalid,
+.textarea:invalid {
+  border-color: #d92d20;
+}
+
+.input:invalid:focus,
+.select:invalid:focus,
+.textarea:invalid:focus {
+  box-shadow: 0 0 0 3px color-mix(in srgb, #d92d20 18%, white);
+}
+
 .textarea {
   min-height: 8rem;
   resize: vertical;
 }
 
 .field-error {
-  color: #b42318;
+  color: #d92d20;
   font-size: 0.82rem;
   margin-top: 0.3rem;
 }
@@ -228,6 +252,49 @@ img {
     animation: none !important;
     transition: none !important;
   }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.35s ease-out;
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-down {
+  animation: slide-down 0.25s ease-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.25s ease-out;
 }
 
 /* ---------- Utility ---------- */

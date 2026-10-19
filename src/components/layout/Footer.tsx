@@ -33,7 +33,7 @@ export function Footer() {
               <IconWhatsApp size={22} />
             </a>
             <a
-              className="flex h-11 w-11 items-center justify-center rounded-full bg-white/15 text-white transition hover:scale-105"
+              className="flex h-11 w-11 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-[#25D366]/30 transition hover:scale-110 hover:shadow-[0_8px_24px_rgba(37,211,102,0.4)]"
               href={`tel:+${contact.phoneTel}`}
               aria-label="Call now"
             >

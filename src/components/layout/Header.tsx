@@ -69,7 +69,10 @@ export function Header() {
           ))}
         </nav>
         <div className="hidden items-center gap-2 lg:flex">
-          <a className="btn btn-outline" href={`tel:+${contact.phoneTel}`}>
+          <a
+            className="btn border-2 border-[#25D366] bg-transparent text-[#25D366] hover:bg-[#25D366] hover:text-white"
+            href={`tel:+${contact.phoneTel}`}
+          >
             <IconPhone size={16} /> {contact.phoneDisplay}
           </a>
           <a
@@ -80,16 +83,18 @@ export function Header() {
           >
             Enquire now
           </a>
-        </div>
+</div>
         <button
           type="button"
-          className="btn btn-outline lg:hidden"
+          className="inline-flex items-center gap-1.5 rounded-lg border-2 border-[#87CEEB] bg-transparent px-3 py-2 text-sm font-medium text-[#87CEEB] transition hover:bg-[#25D366] hover:text-white lg:hidden"
           aria-expanded={open}
           aria-controls="mobile-nav"
+          aria-haspopup="true"
           onClick={() => setOpen((value) => !value)}
         >
-          {open ? <IconClose /> : <IconMenu />}
-          <span className="sr-only">Menu</span>
+          {open ? <IconClose size={18} /> : <IconMenu size={18} />}
+          {/* <span>{open ? "Close" : "Menu"}</span> */}
+          <span className="sr-only">Toggle menu</span>
         </button>
       </div>
       {open ? (
@@ -100,7 +105,10 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
-            <a className="btn btn-outline" href={`tel:+${contact.phoneTel}`}>
+            <a
+              className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-[#87CEEB] px-4 py-2.5 text-sm font-medium text-[#87CEEB] transition hover:bg-[#25D366] hover:text-white"
+              href={`tel:+${contact.phoneTel}`}
+            >
               <IconPhone size={16} /> Call {contact.phoneDisplay}
             </a>
             <a

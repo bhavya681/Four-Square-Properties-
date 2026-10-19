@@ -240,14 +240,14 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="section bg-primary text-white">
+      <section className="section bg-gradient-to-r from-primary to-accent text-white">
         <div className="container-site flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
           <h2 className="text-3xl font-bold">Ready to find your next property?</h2>
           <div className="flex flex-wrap gap-3">
-            <Link className="btn bg-white text-navy hover:bg-sky" href="/properties">
+            <Link className="btn bg-white text-navy hover:bg-white/90" href="/properties">
               Explore properties
             </Link>
-            <Link className="btn border-white bg-transparent text-white" href="/contact">
+            <Link className="btn border-2 border-white bg-transparent text-white hover:bg-white/10" href="/contact">
               Contact our team
             </Link>
           </div>
