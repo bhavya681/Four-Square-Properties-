@@ -34,6 +34,7 @@ export function EnquiryForm({
   propertyTitle,
   propertySlug,
   renderActions,
+  onSuccess,
 }: {
   propertyTitle?: string;
   propertySlug?: string;
@@ -43,6 +44,7 @@ export function EnquiryForm({
     onSubmit: (e: React.FormEvent) => void;
     onReset: () => void;
   }) => React.ReactNode;
+  onSuccess?: () => void;
 }) {
   const { addEnquiry } = useDemoStore();
   const { notify } = useToast();
@@ -63,30 +65,42 @@ export function EnquiryForm({
 
     setLoading(true);
     await new Promise((resolve) => setTimeout(resolve, 450));
-    addEnquiry({
-      fullName: values.fullName.trim(),
-      phone: values.phone.trim(),
-      email: values.email.trim(),
-      enquiryType: values.enquiryType,
-      preferredLocation: values.preferredLocation,
-      budgetRange: values.budgetRange,
-      message: values.message.trim(),
-      propertyTitle,
+    try {
+      const body = formEnquiryMessage({ ...values, propertyTitle });
+      const formData = new FormData();
+      formData.append("name", values.fullName.trim());
+      formData.append("phone", values.phone.trim());
+      formData.append("email", values.email.trim());
+      formData.append("enquiryType", values.enquiryType);
+      formData.append("preferredLocation", values.preferredLocation);
+      formData.append("budgetRange", values.budgetRange);
+      formData.append("message", values.message.trim());
+      if (propertyTitle) formData.append("property", propertyTitle);
+      formData.append("_replyto", values.email.trim());
+
+      await fetch(enquiryConfig.formspreeEndpoint, {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" },
+      });
+
+      addEnquiry({
+
       propertySlug,
     });
 
-    const body = formEnquiryMessage({ ...values, propertyTitle });
-    if (enquiryConfig.submitMode === "whatsapp") {
-      window.open(whatsappUrl(body), "_blank", "noopener,noreferrer");
-    } else {
-      window.location.href = mailtoUrl(`Enquiry from ${values.fullName}`, body);
-    }
-
     setLoading(false);
     setDone(true);
-    notify(
-      "A message draft was opened. Send it to reach the team. A copy stays in this browser for the demo admin only — nothing was saved on a server.",
-    );
+    if (typeof window !== "undefined") {
+      localStorage.setItem("contact-popup-seen", "1");
+    }
+    onSuccess?.();
+    notify("Enquiry sent successfully. We'll get back to you soon.");
+  } catch (error) {
+    setLoading(false);
+    notify("Failed to send enquiry. Please try again or call us directly.");
+  }
+    notify("Enquiry sent successfully. We'll get back to you soon.");
   }
 
   function reset() {
@@ -98,8 +112,7 @@ export function EnquiryForm({
   return (
     <form onSubmit={onSubmit} className="grid gap-4" noValidate>
       <p className="text-sm text-muted">
-        This form does not send data to a server. On submit it opens WhatsApp or an email draft,
-        and stores a copy in your browser for the demo admin panel.
+        Your enquiry will be sent directly to foursquare2332@gmail.com.
       </p>
       <div className="grid gap-4 sm:grid-cols-2">
         <Field label="Full name" error={errors.fullName}>
@@ -182,7 +195,7 @@ export function EnquiryForm({
           onChange={(e) => update("consent", e.target.checked)}
           className="mt-1"
         />
-        I understand this will open WhatsApp or email with my details, and a demo copy may be stored in this browser.
+        I understand this will send my enquiry directly to foursquare2332@gmail.com, and a demo copy may be stored in this browser.
       </label>
       {errors.consent ? <p className="field-error">{errors.consent}</p> : null}
       {done ? (

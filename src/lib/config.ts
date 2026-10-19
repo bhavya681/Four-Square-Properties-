@@ -32,9 +32,10 @@ export const contact = {
 
 export const enquiryConfig = {
   /**
-   * Demo-only: opens WhatsApp or an email draft. Nothing is stored on a server.
+   * Demo-only: submits to Formspree to email enquiries to foursquare2332@gmail.com
    */
-  submitMode: "whatsapp" as "whatsapp" | "mailto",
+  submitMode: "formspree" as "whatsapp" | "mailto" | "formspree",
+  formspreeEndpoint: "https://formspree.io/f/xrblgkna",
 };
 
 export const seo = {

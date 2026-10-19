@@ -11,9 +11,21 @@ export function ContactPopup() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
-    const t = setTimeout(() => setOpen(true),  1000);
-    return () => clearTimeout(t);
+    const hasSeen = typeof window !== "undefined" && localStorage.getItem("contact-popup-seen");
+    if (!hasSeen) {
+      const t = setTimeout(() => {
+        setOpen(true);
+        localStorage.setItem("contact-popup-seen", "1");
+      }, 5 * 60 * 1000);
+      return () => clearTimeout(t);
+    }
   }, []);
+
+  useEffect(() => {
+    if (open && typeof window !== "undefined") {
+      localStorage.setItem("contact-popup-seen", "1");
+    }
+  }, [open]);
 
   useEffect(() => {
     if (!open) return;
@@ -77,38 +89,44 @@ export function ContactPopup() {
           <p className="mb-5 text-sm text-muted">
             Share a few details and our team will get back to you shortly.
           </p>
-          <EnquiryForm
-            renderActions={({ loading, done, onSubmit, onReset }) => (
-              <div className="sticky bottom-0 mt-4 flex flex-wrap gap-3 border-t border-line bg-white/95 px-1 py-3 backdrop-blur-sm">
-                {done ? (
-                  <p className="flex w-full items-center gap-2 rounded-lg bg-sky px-3 py-2 text-sm text-navy">
-                    <svg className="h-4 w-4 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                    Draft prepared. Please send the WhatsApp or email message yourself so the team receives it.
-                  </p>
-                ) : (
-                  <>
-                    <button className="btn btn-primary px-5" type="submit" disabled={loading} onClick={onSubmit}>
-                      {loading ? (
-                        <span className="inline-flex items-center gap-2">
-                          <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                            <path d="M21 12a9 9 0 1 1-6.2-8.6" />
-                          </svg>
-                          Preparing…
-                        </span>
-                      ) : (
-                        "Send enquiry draft"
-                      )}
-                    </button>
-                    <button className="btn btn-outline px-5" type="button" onClick={onReset} disabled={loading}>
-                      Reset
-                    </button>
-                  </>
-                )}
-              </div>
-            )}
-          />
+        <EnquiryForm
+          onSuccess={() => {
+            setOpen(false);
+            if (typeof window !== "undefined") {
+              localStorage.setItem("contact-popup-seen", "1");
+            }
+          }}
+          renderActions={({ loading, done, onSubmit, onReset }) => (
+            <div className="sticky bottom-0 mt-4 flex flex-wrap gap-3 border-t border-line bg-white/95 px-1 py-3 backdrop-blur-sm">
+              {done ? (
+                <p className="flex w-full items-center gap-2 rounded-lg bg-sky px-3 py-2 text-sm text-navy">
+                  <svg className="h-4 w-4 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  Enquiry sent. We'll get back to you soon.
+                </p>
+              ) : (
+                <>
+                  <button className="btn btn-primary px-5" type="submit" disabled={loading} onClick={onSubmit}>
+                    {loading ? (
+                      <span className="inline-flex items-center gap-2">
+                        <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                          <path d="M21 12a9 9 0 1 1-6.2-8.6" />
+                        </svg>
+                        Preparing…
+                      </span>
+                    ) : (
+                      "Send enquiry draft"
+                    )}
+                  </button>
+                  <button className="btn btn-outline px-5" type="button" onClick={onReset} disabled={loading}>
+                    Reset
+                  </button>
+                </>
+              )}
+            </div>
+          )}
+        />
         </div>
       </div>
     </div>

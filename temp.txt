@@ -1,0 +1,80 @@
+﻿"use client";
+
+import { useState } from "react";
+import { useDemoStore } from "@/context/DemoStore";
+import { useToast } from "@/components/ui/Toast";
+import { enquiryConfig } from "@/lib/config";
+import {
+  emptyEnquiryForm,
+  validateEnquiry,
+  type EnquiryFormValues,
+} from "@/lib/validation";
+import { formEnquiryMessage, mailtoUrl, whatsappUrl } from "@/lib/whatsapp";
+
+const enquiryTypes = [
+  "Buy a property",
+  "Sell a property",
+  "Investment guidance",
+  "Finance assistance",
+  "Commercial property",
+  "General enquiry",
+];
+
+const locations = ["Boisar", "Tarapur", "Palghar", "Nearby areas", "Not sure yet"];
+const budgets = [
+  "Under â‚¹20 lakh",
+  "â‚¹20â€“40 lakh",
+  "â‚¹40â€“70 lakh",
+  "â‚¹70 lakh â€“ â‚¹1 crore",
+  "Above â‚¹1 crore",
+  "Rental budget",
+];
+
+export function EnquiryForm({
+  propertyTitle,
+  propertySlug,
+  renderActions,
+}: {
+  propertyTitle?: string;
+  propertySlug?: string;
+  renderActions?: (opts: {
+    loading: boolean;
+    done: boolean;
+    onSubmit: (e: React.FormEvent) => void;
+    onReset: () => void;
+  }) => React.ReactNode;
+}) {
+  const { addEnquiry } = useDemoStore();
+  const { notify } = useToast();
+  const [values, setValues] = useState<EnquiryFormValues>(emptyEnquiryForm);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [loading, setLoading] = useState(false);
+  const [done, setDone] = useState(false);
+
+  function update<K extends keyof EnquiryFormValues>(key: K, value: EnquiryFormValues[K]) {
+    setValues((current) => ({ ...current, [key]: value }));
+  }
+
+  async function onSubmit(event: React.FormEvent) {
+    event.preventDefault();
+    const nextErrors = validateEnquiry(values);
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length) return;
+
+    setLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 450));
+    addEnquiry({
+      fullName: values.fullName.trim(),
+      phone: values.phone.trim(),
+      email: values.email.trim(),
+      enquiryType: values.enquiryType,
+      preferredLocation: values.preferredLocation,
+      budgetRange: values.budgetRange,
+      message: values.message.trim(),
+      propertyTitle,
+      propertySlug,
+    });
+
+    const body = formEnquiryMessage({ ...values, propertyTitle });
+    if (enquiryConfig.submitMode === "whatsapp") {
+      window.open(whatsappUrl(body), "_blank", "noopener,noreferrer");
