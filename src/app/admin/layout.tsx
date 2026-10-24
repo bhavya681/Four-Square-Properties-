@@ -7,12 +7,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <header className="border-b border-line bg-white">
         <div className="container-site flex flex-wrap items-center justify-between gap-3 py-3">
           <Link href="/admin" className="flex items-center gap-2">
-            <span className="relative block h-8 w-8 shrink-0">
+            <span className="relative block h-8 w-14 shrink-0">
               <Image
-                src="/logo2.png"
+                src="/logo4.png"
                 alt="Demo admin"
                 fill
-                sizes="32px"
+                sizes="56px"
                 className="object-contain"
               />
             </span>

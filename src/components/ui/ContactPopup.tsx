@@ -57,8 +57,8 @@ export function ContactPopup() {
       >
         <div className="relative flex shrink-0 items-center gap-3 bg-gradient-to-r from-navy via-[#0d3a5c] to-[#0e8fb8] px-5 py-4 text-white sm:px-6">
           <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '20px 20px' }} />
-          <span className="relative block h-12 w-12 shrink-0 rounded-xl bg-white p-1.5 shadow-lg ring-2 ring-white/20">
-            <Image src="/logo2.png" alt={brand.name} fill sizes="48px" className="object-contain" />
+          <span className="relative block h-12 w-20 shrink-0 rounded-xl bg-white p-1.5 shadow-lg ring-2 ring-white/20">
+            <Image src="/logo4.png" alt={brand.name} fill sizes="80px" className="object-contain" />
           </span>
           <div className="relative min-w-0 flex-1">
             <p id="contact-popup-title" className="truncate text-base font-bold leading-tight sm:text-lg">

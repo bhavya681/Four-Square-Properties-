@@ -1,6 +1,16 @@
 import { EnquiryForm } from "@/components/enquiry/EnquiryForm";
-import { IconInstagram, IconMail, IconPhone, IconPin, IconWhatsApp } from "@/components/icons";
-import { contact } from "@/lib/config";
+import {
+  IconFacebook,
+  IconInstagram,
+  IconLinkedIn,
+  IconMail,
+  IconPhone,
+  IconPin,
+  IconTwitter,
+  IconWhatsApp,
+  IconYouTube,
+} from "@/components/icons";
+import { contact, socialLinks } from "@/lib/config";
 import { generalEnquiryMessage, mapsEmbedUrl, mapsSearchUrl, whatsappUrl } from "@/lib/whatsapp";
 
 export const metadata = {
@@ -30,23 +40,64 @@ export default function ContactPage() {
           <p className="text-muted">{contact.email}</p>
         </a>
         <a
-          className="card p-5"
+          className="card p-5 hover:border-[#25D366] transition group"
           href={whatsappUrl(generalEnquiryMessage())}
           target="_blank"
           rel="noopener noreferrer"
         >
-          <IconWhatsApp className="text-primary" />
+          <IconWhatsApp className="text-[#25D366] group-hover:scale-110 transition-transform" />
           <h2 className="mt-3 font-semibold text-navy">WhatsApp</h2>
-          <p className="text-muted">Message {contact.phoneDisplay}</p>
+          <p className="text-muted">Direct chat: {contact.phoneDisplay}</p>
         </a>
-        <a className="card p-5" href={contact.instagramUrl} target="_blank" rel="noopener noreferrer">
-          <IconInstagram className="text-primary" />
+        <a
+          className="card p-5 hover:border-pink-500 transition group"
+          href={socialLinks.instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <IconInstagram className="text-pink-600 group-hover:scale-110 transition-transform" />
           <h2 className="mt-3 font-semibold text-navy">Instagram</h2>
-          <p className="text-muted">
-            {contact.instagramIsPlaceholder
-              ? "Profile URL not supplied yet — placeholder link in config."
-              : "Open Instagram"}
-          </p>
+          <p className="text-muted">@foursquareprofin</p>
+        </a>
+        <a
+          className="card p-5 hover:border-[#1877F2] transition group"
+          href={socialLinks.facebook}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <IconFacebook className="text-[#1877F2] group-hover:scale-110 transition-transform" />
+          <h2 className="mt-3 font-semibold text-navy">Facebook</h2>
+          <p className="text-muted">facebook.com/foursquareprofin</p>
+        </a>
+        <a
+          className="card p-5 hover:border-[#0A66C2] transition group"
+          href={socialLinks.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <IconLinkedIn className="text-[#0A66C2] group-hover:scale-110 transition-transform" />
+          <h2 className="mt-3 font-semibold text-navy">LinkedIn</h2>
+          <p className="text-muted">Pramod Bharti (Founder &amp; Consultant)</p>
+        </a>
+        <a
+          className="card p-5 hover:border-black transition group"
+          href={socialLinks.twitter}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <IconTwitter className="text-black group-hover:scale-110 transition-transform" />
+          <h2 className="mt-3 font-semibold text-navy">Twitter / X</h2>
+          <p className="text-muted">@squareprofin</p>
+        </a>
+        <a
+          className="card p-5 hover:border-red-600 transition group"
+          href={socialLinks.youtube}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <IconYouTube className="text-red-600 group-hover:scale-110 transition-transform" />
+          <h2 className="mt-3 font-semibold text-navy">YouTube Video Channel</h2>
+          <p className="text-muted">Watch video tours &amp; project walkthroughs</p>
         </a>
       </div>
       <div className="mt-6 card p-5">

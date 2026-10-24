@@ -1,7 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
-import { IconInstagram, IconMail, IconPhone, IconPin, IconWhatsApp } from "@/components/icons";
-import { brand, contact, navLinks, serviceNav } from "@/lib/config";
+import {
+  IconFacebook,
+  IconInstagram,
+  IconLinkedIn,
+  IconMail,
+  IconPhone,
+  IconPin,
+  IconTwitter,
+  IconWhatsApp,
+  IconYouTube,
+} from "@/components/icons";
+import { brand, contact, navLinks, serviceNav, socialLinks, youtubeConfig } from "@/lib/config";
 import { mapsSearchUrl, whatsappUrl, generalEnquiryMessage } from "@/lib/whatsapp";
 
 export function Footer() {
@@ -10,12 +20,12 @@ export function Footer() {
       <div className="container-site grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.1fr]">
         <div>
           <Link href="/" className="flex items-center gap-3">
-            <span className="relative block h-12 w-12 shrink-0">
+            <span className="relative block h-14 w-28 shrink-0">
               <Image
-                src="/logo2.png"
+                src="/logo3.png"
                 alt={brand.name}
                 fill
-                sizes="48px"
+                sizes="120px"
                 className="object-contain"
               />
             </span>
@@ -95,24 +105,72 @@ export function Footer() {
               {brand.website}
             </a>
           </p>
-          <div className="flex flex-wrap gap-2 pt-2">
-            <a
-              className="btn btn-primary"
-              href={whatsappUrl(generalEnquiryMessage())}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              WhatsApp
-            </a>
-            <a
-              className="btn btn-outline border-white/20 bg-transparent text-white"
-              href={contact.instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <IconInstagram size={16} /> Instagram
-              {contact.instagramIsPlaceholder ? " (set URL)" : ""}
-            </a>
+          <div className="pt-2">
+            <p className="text-xs font-semibold uppercase tracking-wider text-white/70 mb-2.5">
+              Connect With Us
+            </p>
+            <div className="flex flex-wrap items-center gap-2">
+              <a
+                className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#25D366] text-white shadow transition hover:scale-110 hover:shadow-[#25D366]/40"
+                href={whatsappUrl(generalEnquiryMessage())}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                title="WhatsApp"
+              >
+                <IconWhatsApp size={18} />
+              </a>
+              <a
+                className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#1877F2] text-white shadow transition hover:scale-110 hover:shadow-[#1877F2]/40"
+                href={socialLinks.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                title="Facebook"
+              >
+                <IconFacebook size={18} />
+              </a>
+              <a
+                className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white shadow transition hover:scale-110 hover:shadow-pink-500/40"
+                href={socialLinks.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                title="Instagram"
+              >
+                <IconInstagram size={18} />
+              </a>
+              <a
+                className="flex h-9 w-9 items-center justify-center rounded-lg bg-black text-white border border-white/20 shadow transition hover:scale-110 hover:border-white/50"
+                href={socialLinks.twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Twitter / X"
+                title="Twitter / X"
+              >
+                <IconTwitter size={16} />
+              </a>
+              <a
+                className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#0A66C2] text-white shadow transition hover:scale-110 hover:shadow-[#0A66C2]/40"
+                href={socialLinks.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                title="LinkedIn"
+              >
+                <IconLinkedIn size={18} />
+              </a>
+              <a
+                className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#FF0000] text-white shadow transition hover:scale-110 hover:shadow-red-600/40"
+                href={socialLinks.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="YouTube"
+                title="YouTube Playlist"
+              >
+                <IconYouTube size={18} />
+              </a>
+            </div>
           </div>
         </div>
       </div>

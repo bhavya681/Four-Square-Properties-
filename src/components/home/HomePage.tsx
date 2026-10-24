@@ -11,6 +11,7 @@ import {
 } from "@/components/icons";
 import { PropertyCard } from "@/components/property/PropertyCard";
 import { SmartImage } from "@/components/ui/SmartImage";
+import { VideoSection } from "@/components/home/VideoSection";
 import { useDemoStore } from "@/context/DemoStore";
 import { brand, DEMO_NOTICE } from "@/lib/config";
 import { locationCopy } from "@/lib/seed-data";
@@ -216,6 +217,8 @@ export function HomePage() {
           </ol>
         </div>
       </section>
+
+      <VideoSection />
 
       <section className="section">
         <div className="container-site">

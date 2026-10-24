@@ -85,9 +85,9 @@ export function EnquiryForm({
       });
 
       addEnquiry({
-
-      propertySlug,
-    });
+        ...values,
+        propertySlug,
+      });
 
     setLoading(false);
     setDone(true);

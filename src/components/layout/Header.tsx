@@ -4,8 +4,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { IconClose, IconMenu, IconPhone, IconWhatsApp } from "@/components/icons";
-import { brand, contact, navLinks } from "@/lib/config";
+import {
+  IconClose,
+  IconFacebook,
+  IconInstagram,
+  IconLinkedIn,
+  IconMenu,
+  IconPhone,
+  IconTwitter,
+  IconWhatsApp,
+  IconYouTube,
+} from "@/components/icons";
+import { brand, contact, navLinks, socialLinks } from "@/lib/config";
 import { generalEnquiryMessage, whatsappUrl } from "@/lib/whatsapp";
 
 export function Header() {
@@ -36,12 +46,12 @@ export function Header() {
     >
       <div className="container-site flex items-center justify-between gap-4 py-3">
         <Link href="/" className="flex min-w-0 items-center gap-3">
-          <span className="relative block h-10 w-10 shrink-0">
+          <span className="relative block h-10 w-16 shrink-0 sm:h-12 sm:w-20">
             <Image
-              src="/logo2.png"
+              src="/logo4.png"
               alt={brand.name}
               fill
-              sizes="40px"
+              sizes="80px"
               className="object-contain"
               priority
             />
@@ -119,6 +129,56 @@ export function Header() {
             >
               <IconWhatsApp size={18} /> Enquire on WhatsApp
             </a>
+            <div className="pt-2 border-t border-line mt-1">
+              <p className="text-xs font-semibold text-muted mb-2">Follow our channels:</p>
+              <div className="flex items-center gap-2">
+                <a
+                  className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#1877F2] text-white"
+                  href={socialLinks.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                >
+                  <IconFacebook size={16} />
+                </a>
+                <a
+                  className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white"
+                  href={socialLinks.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                >
+                  <IconInstagram size={16} />
+                </a>
+                <a
+                  className="flex h-8 w-8 items-center justify-center rounded-lg bg-black text-white"
+                  href={socialLinks.twitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Twitter / X"
+                >
+                  <IconTwitter size={14} />
+                </a>
+                <a
+                  className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0A66C2] text-white"
+                  href={socialLinks.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <IconLinkedIn size={16} />
+                </a>
+                <a
+                  className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#FF0000] text-white"
+                  href={socialLinks.youtube}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="YouTube"
+                >
+                  <IconYouTube size={16} />
+                </a>
+              </div>
+            </div>
           </nav>
         </div>
       ) : null}
