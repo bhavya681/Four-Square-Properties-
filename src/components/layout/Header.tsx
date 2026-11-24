@@ -15,7 +15,7 @@ import {
   IconWhatsApp,
   IconYouTube,
 } from "@/components/icons";
-import { brand, contact, navLinks, socialLinks } from "@/lib/config";
+import { contact, navLinks, socialLinks } from "@/lib/config";
 import { generalEnquiryMessage, whatsappUrl } from "@/lib/whatsapp";
 
 export function Header() {
@@ -45,24 +45,16 @@ export function Header() {
       }`}
     >
       <div className="container-site flex items-center justify-between gap-4 py-3">
-        <Link href="/" className="flex min-w-0 items-center gap-3">
-          <span className="relative block h-10 w-16 shrink-0 sm:h-12 sm:w-20">
+        <Link href="/" className="flex min-w-0 items-center gap-3 w-full lg:w-auto" aria-label="Four Square Properties & Finance Services - Home">
+          <span className="relative block shrink-0 h-10 w-24 sm:h-12 sm:w-28 md:h-14 md:w-32 lg:h-16 lg:w-36 xl:h-18 xl:w-40 lg:flex-shrink-0">
             <Image
-              src="/logo4.png"
-              alt={brand.name}
+              src="/logo.png"
+              alt="Four Square Properties & Finance Services"
               fill
-              sizes="80px"
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 112px, (max-width: 1024px) 128px, (max-width: 1280px) 144px, 160px"
               className="object-contain"
               priority
             />
-          </span>
-          <span className="min-w-0">
-            <span className="block truncate text-sm font-bold leading-tight text-navy sm:text-base">
-              {brand.shortName}
-            </span>
-            <span className="hidden truncate text-xs text-muted sm:block">
-              Properties & Finance Services
-            </span>
           </span>
         </Link>
         <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary">

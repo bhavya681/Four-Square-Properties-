@@ -3,15 +3,15 @@
 :root {
   --background: #ffffff;
   --foreground: #172b3a;
-  --primary: #16a8d5;
-  --navy: #123b5d;
-  --sky: #eaf7fc;
-  --sky-soft: #f2fafc;
+  --primary: #0f2d4a;
+  --navy: #0f2d4a;
+  --sky: #e8edf2;
+  --sky-soft: #f0f3f6;
   --muted: #64748b;
-  --line: #dce8ef;
-  --accent: #0e8fb8;
-  --shadow-card: 0 10px 30px rgba(18, 59, 93, 0.08);
-  --shadow-soft: 0 4px 18px rgba(18, 59, 93, 0.06);
+  --line: #cbd5e1;
+  --accent: #25b8e8;
+  --shadow-card: 0 10px 30px rgba(15, 45, 74, 0.12);
+  --shadow-soft: 0 4px 18px rgba(15, 45, 74, 0.08);
 }
 
 @theme inline {

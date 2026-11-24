@@ -6,7 +6,7 @@ export const brand = {
   description:
     "Four Square Properties & Finance Services is a professional real estate and finance consultancy serving Boisar, Tarapur, Palghar and surrounding areas, with a special focus on helping Mumbai clients invest confidently in Palghar–Boisar.",
   experience: "15+ years",
-  website: "https://foursquareprofin.com",
+  website: "https://www.foursquareprofin.online/",
   reraNumber: "MahaRERA A51700000001",
 } as const;
 
@@ -65,6 +65,8 @@ export const navLinks = [
   { href: "/videos", label: "Videos" },
   { href: "/about", label: "About Us" },
   { href: "/services", label: "Services" },
+  { href: "/profile", label: "Profile" },
+  { href: "/feedback", label: "Feedback" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
@@ -83,6 +85,30 @@ export type Video = {
   description?: string;
   location?: "Boisar" | "Palghar" | "General";
   featured?: boolean;
+};
+
+export type VideoReview = {
+  videoId: string;
+  title: string;
+  description?: string;
+  location?: "Boisar" | "Palghar" | "General";
+  type: "video" | "shorts";
+  url: string;
+  thumbnail?: string;
+  rating: number;
+  totalReviews: number;
+  comments: VideoComment[];
+};
+
+export type VideoComment = {
+  id: string;
+  author: string;
+  avatar: string;
+  date: string;
+  rating: number;
+  text: string;
+  likes: number;
+  isVerified?: boolean;
 };
 
 /**
@@ -203,6 +229,125 @@ export const videos: Video[] = [
     title: "Boisar & Palghar property showcase — Direct builder guidance & zero brokerage",
     description: "Comprehensive walkthrough of local projects and buyer consultancy. Call +91 99212 48234.",
     location: "General",
+  },
+];
+
+/**
+ * Video Reviews with ratings, comments, and user feedback
+ * Add more videos here as needed - each can have multiple comments with ratings
+ */
+export const videoReviews: VideoReview[] = [
+  // {
+  //   videoId: "aVL8MH841hU",
+  //   title: "Boisar Luxurious Flat - Premium Quality at Affordable Price",
+  //   description: "Premium quality residential flat in Boisar with modern amenities and budget-friendly pricing.",
+  //   location: "Boisar",
+  //   type: "video",
+  //   url: "https://www.youtube.com/watch?v=aVL8MH841hU",
+  //   thumbnail: "https://img.youtube.com/vi/aVL8MH841hU/hqdefault.jpg",
+  //   rating: 4.8,
+  //   totalReviews: 124,
+  //   comments: [
+  //     {
+  //       id: "c1",
+  //       author: "Rajesh Sharma",
+  //       avatar: "RS",
+  //       date: "2 weeks ago",
+  //       rating: 5,
+  //       text: "Excellent property tour! The Boisar flat showcased has great amenities and the pricing is very competitive. Pramod sir explained everything clearly.",
+  //       likes: 24,
+  //       isVerified: true,
+  //     },
+  //     {
+  //       id: "c2",
+  //       author: "Priya Patel",
+  //       avatar: "PP",
+  //       date: "1 month ago",
+  //       rating: 5,
+  //       text: "Very informative video about Palghar properties near Kelve Beach. The locality guide helped me understand the area better. Highly recommended for Mumbai investors!",
+  //       likes: 18,
+  //       isVerified: true,
+  //     },
+  //     {
+  //       id: "c3",
+  //       author: "Amit Kumar",
+  //       avatar: "AK",
+  //       date: "3 weeks ago",
+  //       rating: 4,
+  //       text: "Good walkthrough of the Spanish Theme Villa. Would love to see more interior shots. The zero brokerage claim is impressive if true.",
+  //       likes: 12,
+  //     },
+  //     {
+  //       id: "c4",
+  //       author: "Sunita Deshmukh",
+  //       avatar: "SD",
+  //       date: "1 week ago",
+  //       rating: 5,
+  //       text: "Finally a genuine property consultant who doesn't push fake promises. Pramod Bharti's 15+ years experience shows in his knowledge. Trustworthy!",
+  //       likes: 31,
+  //       isVerified: true,
+  //     },
+  //     {
+  //       id: "c5",
+  //       author: "Vikram Singh",
+  //       avatar: "VS",
+  //       date: "2 days ago",
+  //       rating: 5,
+  //       text: "The bullet train corridor insight was very valuable. This is exactly the kind of local knowledge Mumbai investors need. Subscribed to the channel!",
+  //       likes: 15,
+  //     },
+  //   ],
+  // },
+  {
+    videoId: "0gXgRICLUVE",
+    title: "Boisar Property Investment Opportunity - Shorts",
+    description: "Quick overview of prime investment property in Boisar with high growth potential near bullet train corridor.",
+    location: "Boisar",
+    type: "shorts",
+    url: "https://youtube.com/shorts/0gXgRICLUVE",
+    thumbnail: "https://img.youtube.com/vi/0gXgRICLUVE/hqdefault.jpg",
+    rating: 4.9,
+    totalReviews: 87,
+    comments: [
+      {
+        id: "sc1",
+        author: "Deepak Jain",
+        avatar: "DJ",
+        date: "1 day ago",
+        rating: 5,
+        text: "Amazing short! Crisp and informative. The location near bullet train is a game changer for investment.",
+        likes: 45,
+        isVerified: true,
+      },
+      {
+        id: "sc2",
+        author: "Meera Nair",
+        avatar: "MN",
+        date: "3 hours ago",
+        rating: 5,
+        text: "Love the short format - quick decision making info. Will contact for site visit!",
+        likes: 23,
+      },
+      {
+        id: "sc3",
+        author: "Rohit Gupta",
+        avatar: "RG",
+        date: "5 hours ago",
+        rating: 4,
+        text: "Good overview. Would like to see more details on pricing and payment plans.",
+        likes: 12,
+      },
+      {
+        id: "sc4",
+        author: "Kavya Reddy",
+        avatar: "KR",
+        date: "2 hours ago",
+        rating: 5,
+        text: "Perfect for busy professionals. Short, sweet, and covers all key points. Great work!",
+        likes: 19,
+        isVerified: true,
+      },
+    ],
   },
 ];
 

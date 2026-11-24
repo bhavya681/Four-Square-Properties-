@@ -55,7 +55,7 @@ export function ContactPopup() {
         className="relative flex w-full max-w-2xl flex-col overflow-hidden rounded-t-3xl border border-line bg-white shadow-[0_24px_70px_rgba(18,59,93,0.3)] sm:max-h-[92vh] sm:rounded-2xl animate-slide-up"
         style={{ maxHeight: "92vh", paddingBottom: "env(safe-area-inset-bottom)" }}
       >
-        <div className="relative flex shrink-0 items-center gap-3 bg-gradient-to-r from-navy via-[#0d3a5c] to-[#0e8fb8] px-5 py-4 text-white sm:px-6">
+        <div className="relative flex shrink-0 items-center gap-3 bg-gradient-to-r from-navy via-[#0f2d4a] to-[#25b8e8] px-5 py-4 text-white sm:px-6">
           <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '20px 20px' }} />
           <span className="relative block h-12 w-20 shrink-0 rounded-xl bg-white p-1.5 shadow-lg ring-2 ring-white/20">
             <Image src="/logo4.png" alt={brand.name} fill sizes="80px" className="object-contain" />

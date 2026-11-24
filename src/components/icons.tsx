@@ -197,10 +197,42 @@ export function IconPlay(props: IconProps) {
   );
 }
 
+export function IconStar(props: IconProps) {
+  return (
+    <svg {...base({ ...props, stroke: "none" })} fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+    </svg>
+  );
+}
+
+export function IconMessageSquare(props: IconProps) {
+  return (
+    <svg {...base(props)}>
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z" />
+    </svg>
+  );
+}
+
 export function IconYouTube(props: IconProps) {
   return (
     <svg {...base({ ...props, stroke: "none" })} fill="currentColor" viewBox="0 0 24 24">
       <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+    </svg>
+  );
+}
+
+export function IconVerified(props: IconProps) {
+  return (
+    <svg {...base({ ...props, stroke: "none" })} fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.5 14.5l-4-4 1.41-1.41 2.59 2.59 6-6 1.41 1.41-7.41 7.41z" />
+    </svg>
+  );
+}
+
+export function IconThumbUp(props: IconProps) {
+  return (
+    <svg {...base(props)}>
+      <path d="M12 21V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6.5l4 4v-13.5c0-.83-.67-1.5-1.5-1.5S13 3.5 13 4.33V12H4v9h9z" />
     </svg>
   );
 }

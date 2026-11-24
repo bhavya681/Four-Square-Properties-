@@ -19,17 +19,17 @@ export function Footer() {
     <footer className="mt-auto border-t border-line bg-navy text-white">
       <div className="container-site grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.1fr]">
         <div>
-          <Link href="/" className="flex items-center gap-3">
-            <span className="relative block h-14 w-28 shrink-0">
+          <Link href="/" className="flex items-center gap-3" aria-label="Four Square Properties & Finance Services - Home">
+            <span className="relative block shrink-0 h-12 w-28 sm:h-14 sm:w-32 md:h-16 md:w-36 lg:h-18 lg:w-40 xl:h-20 xl:w-44">
               <Image
-                src="/logo3.png"
-                alt={brand.name}
+                src="/logo.png"
+                alt="Four Square Properties & Finance Services"
                 fill
-                sizes="120px"
+                sizes="(max-width: 640px) 112px, (max-width: 768px) 128px, (max-width: 1024px) 144px, (max-width: 1280px) 160px, 176px"
                 className="object-contain"
               />
             </span>
-            <strong className="text-lg font-bold leading-tight">{brand.shortName}</strong>
+            <strong className="text-lg font-bold leading-tight sm:text-xl md:text-2xl">{brand.shortName}</strong>
           </Link>
           <p className="mt-4 max-w-sm text-sm text-white/75">{brand.description}</p>
           <div className="mt-5 flex gap-3">
